@@ -21,3 +21,5 @@ var newOrder = new Order({
 newOrder.save();
 
 module.exports = connectDB;
+
+//mongodb-service.mongo.svc.cluster.local:27017

@@ -5,10 +5,6 @@ const productSchema = mongoose.Schema({
     type: String,
     require: true,
   },
-  brand: {
-    type: String, 
-    require: true,
-  },
   OS: {
     type: String,
     required: true
@@ -25,6 +21,14 @@ const productSchema = mongoose.Schema({
     type: String,
     require: true
   }, 
+  SIM: {
+    type: String,
+    require: true
+  }, 
+  display: {
+    type: String,
+    require: true
+  }, 
   displayResolution: {
     type: String,
     require: true
@@ -37,14 +41,6 @@ const productSchema = mongoose.Schema({
     type: String,
     require: true
   }, 
-  resolution: {
-    type: String,
-    require: true
-  }, 
-  display: {
-    type: String,
-    require: true
-  }, 
   battery: {
     type: String,
     require: true
@@ -53,14 +49,6 @@ const productSchema = mongoose.Schema({
     type: String,
     require: true
   }, 
-  memory: {
-    type: String,
-    require: true
-  }, 
-  date: {
-    type: Date,
-    default: Date.now
-  }
 })
 
 const product = mongoose.model("Product", productSchema)
