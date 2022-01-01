@@ -25,11 +25,19 @@ const productSchema = mongoose.Schema({
     type: String,
     require: true
   }, 
+  SIMSlots: {
+    type: String,
+    require: true
+  }, 
   display: {
     type: String,
     require: true
   }, 
   displayResolution: {
+    type: String,
+    require: true
+  }, 
+  displayDimensions: {
     type: String,
     require: true
   }, 
@@ -48,9 +56,13 @@ const productSchema = mongoose.Schema({
   price: {
     type: String,
     require: true
+  },
+  inStock: {
+    type: String,
+    require: true
   }, 
 })
 
-const product = mongoose.model("Product", productSchema)
+const Product = mongoose.model("Product", productSchema)
 
-module.exports = product;
+module.exports = Product;
