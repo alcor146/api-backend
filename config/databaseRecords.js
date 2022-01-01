@@ -7,7 +7,7 @@ const DATA = [
         "RAM": "8 GB",
         "processor": "octa-core",
         "SIM": "Nano SIM",
-        "sloturiSIM": "dual SIM",
+        "SIMSlots": "dual SIM",
         "display": "IPS",
         "displayResolution": "2400 x 1080",
         "diplayDimensions": "6.5 inch",
@@ -25,7 +25,7 @@ const DATA = [
         "RAM": "4 GB",
         "processor": "octa-core",
         "SIM": "Nano SIM",
-        "sloturiSIM": "dual SIM",
+        "SIMSlots": "dual SIM",
         "display": "IPS",
         "displayResolution": "720 x 1600",
         "diplayDimensions": "6.5 inch",
@@ -43,7 +43,7 @@ const DATA = [
         "RAM": "4 GB",
         "processor": "hexa-core",
         "SIM": "Nano SIM",
-        "sloturiSIM": "Dual SIM",
+        "SIMSlots": "Dual SIM",
         "display": "OLED",
         "displayResolution": "2532 x 1170",
         "diplayDimensions": "6.1 inch",
@@ -61,7 +61,7 @@ const DATA = [
         "RAM": "6 GB",
         "processor": "octa-core",
         "SIM": "Nano SIM",
-        "sloturiSIM": "Dual SIM",
+        "SIMSlots": "Dual SIM",
         "display": "Super AMOLED",
         "displayResolution": "2400 x 1080",
         "diplayDimensions": "6.5 inch",
@@ -79,7 +79,7 @@ const DATA = [
         "RAM": "4 GB",
         "processor": "octa-core",
         "SIM": "Nano SIM",
-        "sloturiSIM": "Dual SIM",
+        "SIMSlots": "Dual SIM",
         "display": "IPS",
         "displayResolution": "720 x 1600",
         "diplayDimensions": "6.5 inch",
@@ -97,7 +97,7 @@ const DATA = [
         "RAM": "4 GB",
         "processor": "hexa-core",
         "SIM": "Nano SIM",
-        "sloturiSIM": "Dual SIM",
+        "SIMSlots": "Dual SIM",
         "display": "OLED",
         "displayResolution": "2532 x 1170",
         "diplayDimensions": "6.1 inch",
@@ -115,7 +115,7 @@ const DATA = [
         "RAM": "6 GB",
         "processor": "octa-core",
         "SIM": "Nano SIM",
-        "sloturiSIM": "Dual SIM",
+        "SIMSlots": "Dual SIM",
         "display": "IPS",
         "displayResolution": "2400 x 1080",
         "diplayDimensions": "6.5 inch",
@@ -133,7 +133,7 @@ const DATA = [
         "RAM": "4 GB",
         "processor": "octa-core",
         "SIM": "Nano SIM",
-        "sloturiSIM": "Dual SIM",
+        "SIMSlots": "Dual SIM",
         "display": "IPS",
         "displayResolution": "2400 x 1080",
         "diplayDimensions": "6.67 inch",
@@ -151,7 +151,7 @@ const DATA = [
         "RAM": "4 GB",
         "processor": "hexa-core",
         "SIM": "Nano SIM",
-        "sloturiSIM": "Dual SIM",
+        "SIMSlots": "Dual SIM",
         "display": "Super Retina XDR",
         "displayResolution": "2532 x 1170",
         "diplayDimensions": "6.1 inch",
@@ -169,7 +169,7 @@ const DATA = [
         "RAM": "1 GB",
         "processor": "quad-core",
         "SIM": "Nano SIM",
-        "sloturiSIM": "Dual SIM",
+        "SIMSlots": "Dual SIM",
         "display": "TFT",
         "displayResolution": "690 x 480",
         "diplayDimensions": "5.7 inch",
@@ -187,7 +187,7 @@ const DATA = [
         "RAM": "2 GB",
         "processor": "quad-core",
         "SIM": "Nano SIM",
-        "sloturiSIM": "Dual SIM",
+        "SIMSlots": "Dual SIM",
         "display": "IPS",
         "displayResolution": "1014 x 480",
         "diplayDimensions": "6.3 inch",
@@ -200,5 +200,24 @@ const DATA = [
     },
 ]
 
-module.exports = DATA
+const orderRecords = [
+    {
+        products: ["iHunt S21 Ultra", "iPhone 12"]
+    },
+    {
+        products: ["Samsung Galaxy A12", "iPhone 12"]
+    },
+    {
+        products: ["iHunt S21 Ultra", "iPhone 13 Pro"]
+    },
+    {
+        products: ["iPhone 13 Pro", "iPhone 12"]
+    },
+
+]
+
+module.exports = {
+    DATA,
+    orderRecords
+}
 

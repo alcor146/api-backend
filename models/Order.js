@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 
 const orderSchema = mongoose.Schema({
   products: {
-    type: [String],
+    type: [],
     require: true,
   },
   status: {
     type: String,
-    required: true
+    default: "Comanda plasata"
   },
   date: {
     type: Date,

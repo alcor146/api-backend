@@ -12,6 +12,7 @@ app.use(cors({
 
 app.use(express.json());
 
+app.use('/api', require('./routes/orders'));
 app.use('/api', require('./routes/products'));
 
 const server = app.listen( PORT, () => {
