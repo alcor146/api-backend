@@ -1,7 +1,7 @@
 var cors = require('cors');
 const express = require('express');
 const app = express();
-const PORT = 3002;
+const PORT = 3001;
 const connectDB = require('./config/databaseConnection')
 
 connectDB()
@@ -12,7 +12,7 @@ app.use(cors({
 
 app.use(express.json());
 
-app.use('/api', require('./routes/orders'));
+
 app.use('/api', require('./routes/products'));
 
 const server = app.listen( PORT, () => {

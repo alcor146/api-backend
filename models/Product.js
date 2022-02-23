@@ -29,6 +29,10 @@ const productSchema = mongoose.Schema({
     type: String,
     require: true
   }, 
+  dimensions: {
+    type: String,
+    require: true
+  }, 
   display: {
     type: String,
     require: true

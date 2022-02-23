@@ -10,7 +10,7 @@ const DATA = [
         "SIMSlots": "dual SIM",
         "display": "IPS",
         "displayResolution": "2400 x 1080",
-        "diplayDimensions": "6.5 inch",
+        "displayDimensions": "6.5 inch",
         "dimensions": "75.8 x 8.9 x 164 mm",
         "mainCamera": "48 MP",
         "frontalCamera": "20 MP",
@@ -28,7 +28,7 @@ const DATA = [
         "SIMSlots": "dual SIM",
         "display": "IPS",
         "displayResolution": "720 x 1600",
-        "diplayDimensions": "6.5 inch",
+        "displayDimensions": "6.5 inch",
         "dimensions": "75.8 x 8.9 x 164 mm",
         "mainCamera": "48 MP",
         "frontalCamera": "8 MP",
@@ -46,7 +46,7 @@ const DATA = [
         "SIMSlots": "Dual SIM",
         "display": "OLED",
         "displayResolution": "2532 x 1170",
-        "diplayDimensions": "6.1 inch",
+        "displayDimensions": "6.1 inch",
         "dimensions": "71.5 x 146.7 x 7.65 mm",
         "mainCamera": "12 MP",
         "frontalCamera": "12 MP",
@@ -64,7 +64,7 @@ const DATA = [
         "SIMSlots": "Dual SIM",
         "display": "Super AMOLED",
         "displayResolution": "2400 x 1080",
-        "diplayDimensions": "6.5 inch",
+        "displayDimensions": "6.5 inch",
         "dimensions": "75.1 x 159.9 x 8.4 mm",
         "mainCamera": "64 MP",
         "frontalCamera": "32 MP",
@@ -82,7 +82,7 @@ const DATA = [
         "SIMSlots": "Dual SIM",
         "display": "IPS",
         "displayResolution": "720 x 1600",
-        "diplayDimensions": "6.5 inch",
+        "displayDimensions": "6.5 inch",
         "dimensions": "75.8 x 8.9 x 164 mm",
         "mainCamera": "48 MP",
         "frontalCamera": "8 MP",
@@ -100,7 +100,7 @@ const DATA = [
         "SIMSlots": "Dual SIM",
         "display": "OLED",
         "displayResolution": "2532 x 1170",
-        "diplayDimensions": "6.1 inch",
+        "displayDimensions": "6.1 inch",
         "dimensions": "71.5 x 146.7 x 7.65 mm",
         "mainCamera": "12 MP",
         "frontalCamera": "12 MP",
@@ -118,7 +118,7 @@ const DATA = [
         "SIMSlots": "Dual SIM",
         "display": "IPS",
         "displayResolution": "2400 x 1080",
-        "diplayDimensions": "6.5 inch",
+        "displayDimensions": "6.5 inch",
         "dimensions": "74.5 x 160.5 x 8.3 mm",
         "mainCamera": "64 MP",
         "frontalCamera": "13 MP",
@@ -136,7 +136,7 @@ const DATA = [
         "SIMSlots": "Dual SIM",
         "display": "IPS",
         "displayResolution": "2400 x 1080",
-        "diplayDimensions": "6.67 inch",
+        "displayDimensions": "6.67 inch",
         "dimensions": "76.68 x 165.75 x 8.8 mm",
         "mainCamera": "64 MP",
         "frontalCamera": "16 MP",
@@ -154,7 +154,7 @@ const DATA = [
         "SIMSlots": "Dual SIM",
         "display": "Super Retina XDR",
         "displayResolution": "2532 x 1170",
-        "diplayDimensions": "6.1 inch",
+        "displayDimensions": "6.1 inch",
         "dimensions": "71.5 x 146.7 x 7.4 mm",
         "mainCamera": "12 MP",
         "frontalCamera": "12 MP",
@@ -172,7 +172,7 @@ const DATA = [
         "SIMSlots": "Dual SIM",
         "display": "TFT",
         "displayResolution": "690 x 480",
-        "diplayDimensions": "5.7 inch",
+        "displayDimensions": "5.7 inch",
         "dimensions": "75.3 x 155 x 10 mm",
         "mainCamera": "5MP",
         "frontalCamera": "2 MP",
@@ -190,7 +190,7 @@ const DATA = [
         "SIMSlots": "Dual SIM",
         "display": "IPS",
         "displayResolution": "1014 x 480",
-        "diplayDimensions": "6.3 inch",
+        "displayDimensions": "6.3 inch",
         "dimensions": "161.2 x 9.5 x 76.6 mm",
         "mainCamera": "13 MP",
         "frontalCamera": "8 MP",
@@ -201,23 +201,49 @@ const DATA = [
 ]
 
 const orderRecords = [
-    {
+    {   
+        username: "admin",
         products: ["iHunt S21 Ultra", "iPhone 12"]
     },
     {
+        username: "admin",
         products: ["Samsung Galaxy A12", "iPhone 12"]
     },
     {
+        username: "admin",
         products: ["iHunt S21 Ultra", "iPhone 13 Pro"]
     },
     {
+        username: "admin",
         products: ["iPhone 13 Pro", "iPhone 12"]
     },
 
 ]
 
+const cardRecords = [
+    {   
+        username: "admin",
+        bank: "BCR",
+        cardNumber: "3525355235",
+        expirationMonth: "12",
+        expirationYear: "1",
+        securityCode: "132"
+
+    },
+    {   
+        username: "admin",
+        bank: "BRD",
+        cardNumber: "345354",
+        expirationMonth: "1",
+        expirationYear: "1",
+        securityCode: "432"
+
+    },
+]
+
 module.exports = {
     DATA,
-    orderRecords
+    orderRecords,
+    cardRecords
 }
 
