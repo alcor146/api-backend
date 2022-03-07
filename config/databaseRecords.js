@@ -241,9 +241,39 @@ const cardRecords = [
     },
 ]
 
+const locationRecords = [
+    {   
+        county: "Dambovita",
+        town: "Targoviste",
+        address: "Strada Aleea Manastirii, nr 15",
+    },
+    {   
+        county: "Bacau",
+        town: "Onesti",
+        address: "Strada Crizantemelor, nr 15"
+    },
+]
+
+const clientRecords = [
+    {   
+        email: "aurel@yahoo.com",
+        name: "Ristoiu Aurel",
+        phoneNumber: "63463463463463",
+        password: "parola123"
+    },
+    {   
+        email: "tudy@gmail.com",
+        name: "Tudose Constantin",
+        phoneNumber: "1231231231223",
+        password: "parola123"
+    },
+]
+
 module.exports = {
     DATA,
     orderRecords,
-    cardRecords
+    cardRecords,
+    locationRecords,
+    clientRecords
 }
 

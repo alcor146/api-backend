@@ -108,9 +108,6 @@ exports.modifyOrderById = async (req, res, next) => {
                 }
              
         }
-      
-    
-  
 }
 
 //@describe DELETE /Orders/:id -- Admin
@@ -122,8 +119,5 @@ exports.deleteOrderById = async (req, res, next) => {
     const deleteOrder = await Order.findByIdAndDelete(id);
 
     res.status(200).json({success: true, message: `Order with id ${id} deleted!`, data: deleteOrder});
-        
-    
-  
 }
 

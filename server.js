@@ -7,7 +7,7 @@ const connectDB = require('./config/databaseConnection')
 connectDB()
 
 app.use(cors({
-    origin: "http://localhost:4200"
+    origin: "*"
 }));
 
 app.use(express.json());

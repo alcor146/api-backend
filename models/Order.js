@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
 
 const orderSchema = mongoose.Schema({
-  username: {
-    type: String,
-    require: true,
-  },
   products: {
     type: [],
     require: true,

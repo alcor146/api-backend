@@ -1,14 +1,15 @@
 const mongoose = require('mongoose');
 const Order = require('../models/Order')
 const Product = require('../models/Product');
-const {DATA, orderRecords, cardRecords}  = require('./databaseRecords')
+const {DATA, orderRecords, cardRecords, locationRecords, clientRecords}  = require('./databaseRecords')
 const { async } = require('rxjs');
 const Card = require('../models/Card');
+const Location = require('../models/Location')
+const Client = require('../models/Client')
 
 
 async function populate() {
   for(let i=0; i<DATA.length; i++) {
-    console.log(DATA[i].displayDimensions)
     var checkIfExists = await Product.findOne({name: DATA[i].name});
     if(checkIfExists == null) {
       var newProduct = new Product({
@@ -30,21 +31,9 @@ async function populate() {
         inStock: DATA[i].inStock
       })
       newProduct.save()
-      console.log(newProduct)
-    }
-    else{
-      //console.log(checkIfExists)
     }
   }
 
-  // for(let i=0; i<orderRecords.length; i++) {
-  //   var checkIfExists = await Order.findOne({bank: cardRecords[i].bank});
-  //     var newOrder = new Order({
-  //       products: orderRecords[i].products,
-  //     })
-  //     newOrder.save()
-  //     //console.log(newOrder.products)
-  // }
 
   for(let i=0; i<cardRecords.length; i++) {
     var checkIfExists = await Card.findOne({bank: cardRecords[i].bank});
@@ -57,12 +46,34 @@ async function populate() {
         expirationYear: cardRecords[i].expirationYear,
         securityCode: cardRecords[i].securityCode,
       })
-      console.log(newCard)
       newCard.save();
     }
-  
-    //console.log(newOrder.products)
-}
+  }
+
+  for(let i=0; i<locationRecords.length; i++) {
+    var checkIfExists = await Location.findOne({bank: locationRecords[i].bank});
+    if(checkIfExists == null) {
+      var newLocation = new Location({
+        county: locationRecords[i].county,
+        town: locationRecords[i].town,
+        address: locationRecords[i].address,
+      })
+      newLocation.save();
+    }
+  }
+
+  for(let i=0; i<clientRecords.length; i++) {
+    var checkIfExists = await Client.findOne({email: clientRecords[i].email});
+    if(checkIfExists == null) {
+      var newClient = new Client({
+        email: clientRecords[i].email,
+        name: clientRecords[i].name,
+        phoneNumber: clientRecords[i].phoneNumber,
+        password: clientRecords[i].password,
+      })
+      newClient.save();
+    }
+  }
 }
 
 
