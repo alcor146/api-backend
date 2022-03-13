@@ -5,6 +5,7 @@ const {getAllProducts, getProductsById, createProduct, modifyProductById, delete
 const {getAllCards, getCardsById, createCard, modifyCardById, deleteCardById } = require('../controllers/cardsControllers');
 const {getAllLocations, getLocationsById, createLocation, modifyLocationById, deleteLocationById } = require('../controllers/locationsControllers');
 const {getAllClients, getClientsById, createClient, modifyClientById, deleteClientById } = require('../controllers/clientsControllers');
+const {getAllOrders, getOrdersById, createOrder, modifyOrderById, deleteOrderById } = require('../controllers/ordersControllers');
 
 
 router.route("/products").get(getAllProducts);        //get all
@@ -30,6 +31,12 @@ router.route("/clients/:id").get(getClientsById);    //get by id
 router.route("/clients").post(createClient);       //create
 router.route("/clients/:id").put(modifyClientById);    //modifybyid
 router.route("/clients/:id").delete(deleteClientById); //delete
+
+router.route("/orders").get(getAllOrders);        //get all
+router.route("/orders/:id").get(getOrdersById);    //get by id    
+router.route("/orders").post(createOrder);       //create
+router.route("/orders/:id").put(modifyOrderById);    //modifybyid
+router.route("/orders/:id").delete(deleteOrderById); //delete
 
 
 

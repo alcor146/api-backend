@@ -7,6 +7,7 @@ exports.getAllOrders = async (req, res, next) => {
         if (!result) {
         res.status(400).json({success: false, message: `NOT FOUND !`});
         } else {
+          console.log(result)
         res.status(200).json({success: true, message: 'GET /Orders Works!', data: result});
         }
     }).catch( err => {
@@ -35,12 +36,18 @@ exports.getOrdersById = async (req, res, next) => {
 exports.createOrder = async (req, res, next) => {
     console.log('POST /orders!!');
 
-      const username = req.body.username;
+      const createdBy = req.body.createdBy;
       const products = req.body.products;
+      const county = req.body.county;
+      const town = req.body.town;
+      const address = req.body.address;
   
       var newOrder = new Order({
-        username: username,
+        createdBy: createdBy,
         products: products,
+        county: county,
+        town: town,
+        address: address,
       })
       console.log(newOrder)
       newOrder.save();
@@ -63,41 +70,19 @@ exports.modifyOrderById = async (req, res, next) => {
               res.status(400).json({success: false, message: `Order with id ${id} does not exist!`});
             } else {
 
-                const name = req.body.name;
-                const OS = req.body.OS;
-                const internalMemory = req.body.internalMemory;
-                const RAM = req.body.RAM;
-                const processor = req.body.processor;
-                const SIM = req.body.SIM;
-                const SIMSlots = req.body.SIMSlots;
-                const display = req.body.display;
-                const displayResolution = req.body.displayResolution;
-                const displayDimensions = req.body.displayDimensions;
-                const dimensions = req.body.dimensions;
-                const mainCamera = req.body.mainCamera;
-                const frontalCamera = req.body.frontalCamera;
-                const battery = req.body.battery;
-                const price = req.body.price;
-                const inStock = req.body.inStock;
+              const createdBy = req.body.createdBy;
+              const products = req.body.products;
+              const county = req.body.county;
+              const town = req.body.town;
+              const address = req.body.address;
 
                 const updatedOrder = await Order.findOneAndUpdate(
                   { _id: id },
-                  { name: name,
-                    OS: OS,
-                    internalMemory: internalMemory,
-                    RAM: RAM,
-                    processor: processor,
-                    SIM: SIM,
-                    SIMSlots: SIMSlots,
-                    display: display,
-                    displayResolution: displayResolution,
-                    displayDimensions: displayDimensions,
-                    dimensions: dimensions,
-                    mainCamera: mainCamera,
-                    frontalCamera: frontalCamera,
-                    battery: battery,
-                    price: price,
-                    inStock: inStock },
+                  { createdBy: createdBy,
+                    products: products,
+                    county: county,
+                    town: town,
+                    address: address},
                   { new: true }
                 );
 

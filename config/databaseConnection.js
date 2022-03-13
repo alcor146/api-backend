@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
-const Order = require('../models/Order')
 const Product = require('../models/Product');
 const {DATA, orderRecords, cardRecords, locationRecords, clientRecords}  = require('./databaseRecords')
 const { async } = require('rxjs');
 const Card = require('../models/Card');
 const Location = require('../models/Location')
 const Client = require('../models/Client')
+const Order = require('../models/Order')
 
 
 async function populate() {
@@ -28,7 +28,12 @@ async function populate() {
         frontalCamera: DATA[i].frontalCamera,
         battery: DATA[i].battery,
         price: DATA[i].price,
-        inStock: DATA[i].inStock
+        inStock: DATA[i].inStock,
+        img: {
+          front: DATA[i].img.front,
+          back: DATA[i].img.back,
+          contentType: DATA[i].img.contentType,
+        }
       })
       newProduct.save()
     }
@@ -74,14 +79,32 @@ async function populate() {
       newClient.save();
     }
   }
+
+ 
+  for(let i=0; i<orderRecords.length; i++) {
+    var checkIfExists = await Order.findOne({createdBy: orderRecords[i].createdBy});
+    if(checkIfExists == null) {
+      var newOrder = new Order({
+        createdBy: orderRecords[i].createdBy,
+        products: orderRecords[i].products,
+        price: orderRecords[i].price,
+        county: orderRecords[i].county,
+        town: orderRecords[i].town,
+        address: orderRecords[i].address,
+      })
+      newOrder.save();
+    }
+  }
 }
 
 
 
 
 const connectDB = async () => {
-  console.log('connection string:', "mongodb://username:password@mongodb-service.mongo.svc.cluster.local:27017");
-  await mongoose.connect("mongodb://localhost:27017/admin", {
+  //var mongoString = "mongodb://username:password@mongo-mongodb.mongo.svc:27017/licenta"
+  var mongoString = "mongodb://username:password@localhost:27017/licenta"
+  console.log('connection string:', mongoString);
+  await mongoose.connect(mongoString, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   }).then(() => {

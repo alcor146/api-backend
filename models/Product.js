@@ -64,7 +64,12 @@ const productSchema = mongoose.Schema({
   inStock: {
     type: String,
     require: true
-  }, 
+  },
+  img: {
+        front: Buffer,
+        back: Buffer,
+        contentType: String
+  },
 })
 
 const Product = mongoose.model("Product", productSchema)

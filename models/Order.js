@@ -1,8 +1,28 @@
 const mongoose = require('mongoose');
 
 const orderSchema = mongoose.Schema({
+  createdBy: {
+    type: String,
+    require: true,
+  },
   products: {
-    type: [],
+    type: String,
+    require: true,
+  },
+  county: {
+    type: String,
+    require: true,
+  },
+  town: {
+    type: String,
+    require: true,
+  },
+  address: {
+    type: String,
+    require: true,
+  },
+  price: {
+    type: String,
     require: true,
   },
   status: {

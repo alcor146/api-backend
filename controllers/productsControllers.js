@@ -1,12 +1,15 @@
 const Product = require('../models/Product');
 
 exports.getAllProducts = async (req, res, next) => {
-  console.log('GET /Products Works!');
+  //console.log('GET /Products Works!');
     const productList = await Product.find()
     .then((result) => {
         if (!result) {
         res.status(400).json({success: false, message: `NOT FOUND !`});
         } else {
+        console.log(result)
+
+      
         res.status(200).json({success: true, message: 'GET /Products Works!', data: result});
         }
     }).catch( err => {
