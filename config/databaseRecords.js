@@ -22,11 +22,6 @@ const DATA = [
         "battery": "5160 mAh",
         "price": "1380",
         "inStock": "150",
-        "img": {
-            "front": fs.readFileSync(path.join(__dirname + '/imagini/front.webp')),
-            "back": fs.readFileSync(path.join(__dirname + '/imagini/back.webp')),
-            "contentType": "webp"
-        },
     },
     {
         "name": "Samsung Galaxy A12",
@@ -45,11 +40,6 @@ const DATA = [
         "battery": "5000 mAh",
         "price": "890",
         "inStock": "150",
-        "img": {
-            "front": fs.readFileSync(path.join(__dirname + '/imagini/front.webp')),
-            "back": fs.readFileSync(path.join(__dirname + '/imagini/back.webp')),
-            "contentType": "webp"
-        },
     },
     {
         "name": "iPhone 13 Pro",
@@ -68,11 +58,7 @@ const DATA = [
         "battery": "2406 mAh",
         "price": "5700",
         "inStock": "150",
-        "img": {
-            "front": fs.readFileSync(path.join(__dirname + '/imagini/front.webp')),
-            "back": fs.readFileSync(path.join(__dirname + '/imagini/back.webp')),
-            "contentType": "webp"
-        },
+
     },
     {
         "name": "Samsung Galaxy A52s",
@@ -91,11 +77,7 @@ const DATA = [
         "battery": "4500 mAh",
         "price": "1685",
         "inStock": "150",
-        "img": {
-            "front": fs.readFileSync(path.join(__dirname + '/imagini/front.webp')),
-            "back": fs.readFileSync(path.join(__dirname + '/imagini/back.webp')),
-            "contentType": "webp"
-        },
+
     },
     {
         "name": "Samsung Galaxy A12",
@@ -114,11 +96,7 @@ const DATA = [
         "battery": "5000 mAh",
         "price": "875",
         "inStock": "150",
-        "img": {
-            "front": fs.readFileSync(path.join(__dirname + '/imagini/front.webp')),
-            "back": fs.readFileSync(path.join(__dirname + '/imagini/back.webp')),
-            "contentType": "webp"
-        },
+
     },
     {
         "name": "iPhone 13",
@@ -137,11 +115,7 @@ const DATA = [
         "battery": "2406 mAh",
         "price": "5169",
         "inStock": "150",
-        "img": {
-            "front": fs.readFileSync(path.join(__dirname + '/imagini/front.webp')),
-            "back": fs.readFileSync(path.join(__dirname + '/imagini/back.webp')),
-            "contentType": "webp"
-        },
+
     },
     {
         "name": "Xiaomi Redmi Note 10S",
@@ -160,11 +134,7 @@ const DATA = [
         "battery": "5000 mAh",
         "price": "1039",
         "inStock": "150",
-        "img": {
-            "front": fs.readFileSync(path.join(__dirname + '/imagini/front.webp')),
-            "back": fs.readFileSync(path.join(__dirname + '/imagini/back.webp')),
-            "contentType": "webp"
-        },
+
     },
     {
         "name": "Xiaomi Redmi Note 9 Pro",
@@ -183,11 +153,7 @@ const DATA = [
         "battery": "5020 mAh",
         "price": "1050",
         "inStock": "150",
-        "img": {
-            "front": fs.readFileSync(path.join(__dirname + '/imagini/front.webp')),
-            "back": fs.readFileSync(path.join(__dirname + '/imagini/back.webp')),
-            "contentType": "webp"
-        },
+
     },
     {
         "name": "iPhone 12",
@@ -206,11 +172,7 @@ const DATA = [
         "battery": "2815 mAh",
         "price": "4150",
         "inStock": "150",
-        "img": {
-            "front": fs.readFileSync(path.join(__dirname + '/imagini/front.webp')),
-            "back": fs.readFileSync(path.join(__dirname + '/imagini/back.webp')),
-            "contentType": "webp"
-        },
+
     },
     {
         "name": "Allview A20 Lite",
@@ -229,11 +191,6 @@ const DATA = [
         "battery": "2400 mAh",
         "price": "330",
         "inStock": "150",
-        "img": {
-            "front": fs.readFileSync(path.join(__dirname + '/imagini/front.webp')),
-            "back": fs.readFileSync(path.join(__dirname + '/imagini/back.webp')),
-            "contentType": "webp"
-        },
     },
     {
         "name": "iHunt S21 Ultra",
@@ -252,14 +209,8 @@ const DATA = [
         "battery": "4000 mAh",
         "price": "395",
         "inStock": "150",
-        "img": {
-            "front": fs.readFileSync(path.join(__dirname + '/imagini/front.webp')),
-            "back": fs.readFileSync(path.join(__dirname + '/imagini/back.webp')),
-            "contentType": "webp"
-        },
     },
 ]
-
 
 
 const cardRecords = [
@@ -330,11 +281,19 @@ const orderRecords = [
     },
 ]
 
+const cartRecords = [
+    {
+        createdBy: "admin",
+        products:  new Map([['iPhone 12', "1"],['iHunt S21 Ultra', "1"]])
+    },
+]
+
 module.exports = {
     DATA,
     orderRecords,
     cardRecords,
     locationRecords,
-    clientRecords
+    clientRecords,
+    cartRecords,
 }
 

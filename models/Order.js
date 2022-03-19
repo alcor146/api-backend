@@ -5,29 +5,24 @@ const orderSchema = mongoose.Schema({
     type: String,
     require: true,
   },
-  products: {
-    type: String,
-    require: true,
-  },
-  county: {
-    type: String,
-    require: true,
-  },
-  town: {
-    type: String,
-    require: true,
-  },
-  address: {
-    type: String,
-    require: true,
+  products: Map,
+  location: {
+    county: {
+      type: String,
+      require: true,
+    },
+    town: {
+      type: String,
+      require: true,
+    },
+    address: {
+      type: String,
+      require: true
+    },
   },
   price: {
     type: String,
     require: true,
-  },
-  status: {
-    type: String,
-    default: "Comanda plasata"
   },
   date: {
     type: Date,

@@ -13,7 +13,7 @@ exports.getAllOrders = async (req, res, next) => {
     }).catch( err => {
         res.status(400).json({success: false, message: `${err}`});
     });
-    } 
+} 
 
 
 exports.getOrdersById = async (req, res, next) => {
@@ -29,7 +29,6 @@ exports.getOrdersById = async (req, res, next) => {
     else {
         res.status(400).json({success: false, message: `Order with id ${id} NOT FOUND !`});
     }
-
 }
 
 

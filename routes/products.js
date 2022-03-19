@@ -1,16 +1,18 @@
 const express = require('express');
 const router = express.Router();
 
-const {getAllProducts, getProductsById, createProduct, modifyProductById, deleteProductById } = require('../controllers/productsControllers');
+const {getAllProducts, getProductsById, createProduct, modifyProductById, deleteProductById, getMultipleProducts } = require('../controllers/productsControllers');
 const {getAllCards, getCardsById, createCard, modifyCardById, deleteCardById } = require('../controllers/cardsControllers');
 const {getAllLocations, getLocationsById, createLocation, modifyLocationById, deleteLocationById } = require('../controllers/locationsControllers');
 const {getAllClients, getClientsById, createClient, modifyClientById, deleteClientById } = require('../controllers/clientsControllers');
 const {getAllOrders, getOrdersById, createOrder, modifyOrderById, deleteOrderById } = require('../controllers/ordersControllers');
+const {getAllCarts, getCartsById, createCart, modifyCartById, deleteCartById } = require('../controllers/cartsControllers');
 
 
 router.route("/products").get(getAllProducts);        //get all
 router.route("/products/:id").get(getProductsById);    //get by id    
 router.route("/products").post(createProduct);       //create
+router.route("/products/cart").post(getMultipleProducts);        //get all for cart
 router.route("/products/:id").put(modifyProductById);    //modifybyid
 router.route("/products/:id").delete(deleteProductById); //delete
 
@@ -37,6 +39,12 @@ router.route("/orders/:id").get(getOrdersById);    //get by id
 router.route("/orders").post(createOrder);       //create
 router.route("/orders/:id").put(modifyOrderById);    //modifybyid
 router.route("/orders/:id").delete(deleteOrderById); //delete
+
+router.route("/carts").get(getAllCarts);        //get all
+router.route("/carts/:id").get(getCartsById);    //get by id    
+router.route("/carts").post(createCart);       //create
+router.route("/carts/:id").put(modifyCartById);    //modifybyid
+router.route("/carts/:id").delete(deleteCartById); //delete
 
 
 

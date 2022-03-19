@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 const Product = require('../models/Product');
-const {DATA, orderRecords, cardRecords, locationRecords, clientRecords}  = require('./databaseRecords')
+const {DATA, orderRecords, cardRecords, locationRecords, clientRecords, cartRecords}  = require('./databaseRecords')
 const { async } = require('rxjs');
 const Card = require('../models/Card');
 const Location = require('../models/Location')
 const Client = require('../models/Client')
 const Order = require('../models/Order')
+const Cart = require('../models/Cart');
 
 
 async function populate() {
@@ -29,11 +30,6 @@ async function populate() {
         battery: DATA[i].battery,
         price: DATA[i].price,
         inStock: DATA[i].inStock,
-        img: {
-          front: DATA[i].img.front,
-          back: DATA[i].img.back,
-          contentType: DATA[i].img.contentType,
-        }
       })
       newProduct.save()
     }
@@ -94,6 +90,17 @@ async function populate() {
       })
       newOrder.save();
     }
+  }
+
+  for(let i=0; i<cartRecords.length; i++) {
+    var checkIfExists = await Cart.findOne({createdBy: cartRecords[i].createdBy});
+    
+      var newCart = new Cart({
+        createdBy: cartRecords[i].createdBy,
+        products: cartRecords[i].products,
+      })
+      newCart.save();
+    
   }
 }
 

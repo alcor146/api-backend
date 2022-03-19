@@ -31,7 +31,25 @@ exports.getProductsById = async (req, res, next) => {
     else {
         res.status(400).json({success: false, message: `Product with id ${id} NOT FOUND !`});
     }
+}
 
+exports.getMultipleProducts = async (req, res, next) => {
+  console.log('GET /MultipleProducts by Id Works!');
+  
+  console.log(req.body)
+  const productList = await Product.find({name: {$in: req.body.productList}})
+    .then((result) => {
+        if (!result) {
+        res.status(400).json({success: false, message: `NOT FOUND !`});
+        } else {
+        //console.log(result)
+
+      
+        res.status(200).json({success: true, message: 'GET /MultipleProducts Works!', data: result});
+        }
+    }).catch( err => {
+        res.status(400).json({success: false, message: `${err}`});
+    });
 }
 
 

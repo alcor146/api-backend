@@ -17,6 +17,11 @@ const clientSchema = mongoose.Schema({
     type: String,
     require: true,
   },
+  role: {
+    type: String,
+    require: true,
+    default: "read-only",
+  },
 })
 
 const Client = mongoose.model("Client", clientSchema)
