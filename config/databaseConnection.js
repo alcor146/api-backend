@@ -95,11 +95,15 @@ async function populate() {
   for(let i=0; i<cartRecords.length; i++) {
     var checkIfExists = await Cart.findOne({createdBy: cartRecords[i].createdBy});
     
+    if(checkIfExists == null){
       var newCart = new Cart({
         createdBy: cartRecords[i].createdBy,
         products: cartRecords[i].products,
       })
       newCart.save();
+    }
+
+  
     
   }
 }

@@ -60,18 +60,20 @@ exports.createCart = async (req, res, next) => {
 exports.modifyCartById = async (req, res, next) => {
   console.log('PUT /Carts change item');
   const createdBy = req.params.id;
+  console.log(req.body)
+  const name = req.body.name;
+  const value = req.body.value  
 
-    const checkExistingCart = await await Cart.findOne({ createdBy: createdBy});
+    const checkExistingCart = await Cart.findOne({ createdBy: createdBy});
 
     if (!checkExistingCart) {
-        res.status(400).json({success: false, message: `Cart with id ${createdBy} does not exist!`});
+        res.status(401).json({success: false, message: `Cart with id ${createdBy} does not exist!`});
     } else {
-        
-        
-        checkExistingCart.products.set(req.body.name, req.body.value)
-        console.log(checkExistingCart.products)
+        if(value == null)
+          checkExistingCart.products.delete(name)
+        else
+          checkExistingCart.products.set(req.body.name, req.body.value)
 
-        
         const updatedCart = await Cart.findOneAndUpdate(
             { createdBy: createdBy},
             { 
