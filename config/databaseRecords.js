@@ -215,7 +215,7 @@ const DATA = [
 
 const cardRecords = [
     {   
-        username: "admin",
+        createdBy: "admin",
         bank: "BCR",
         cardNumber: "3525355235",
         expirationMonth: "12",
@@ -224,7 +224,7 @@ const cardRecords = [
 
     },
     {   
-        username: "admin",
+        createdBy: "admin",
         bank: "BRD",
         cardNumber: "345354",
         expirationMonth: "1",
@@ -263,22 +263,7 @@ const clientRecords = [
 ]
 
 const orderRecords = [
-    {   
-        createdBy: "Aurel",
-        products: "telefon, tableta",
-        price: "135",
-        county: "Bacau",
-        town: "Onesti",
-        address: "Strada Crizantemelor, nr 15",
-    },
-    {   
-        createdBy: "Admin",
-        products: "telefon, pc",
-        price: "124",
-        county: "Bacau",
-        town: "Onesti",
-        address: "Strada Crizantemelor, nr 15",
-    },
+    
 ]
 
 const cartRecords = [

@@ -7,7 +7,6 @@ exports.getAllProducts = async (req, res, next) => {
         if (!result) {
         res.status(400).json({success: false, message: `NOT FOUND !`});
         } else {
-        console.log(result)
 
       
         res.status(200).json({success: true, message: 'GET /Products Works!', data: result});
@@ -26,7 +25,7 @@ exports.getProductsById = async (req, res, next) => {
     const productById = await Product.findById(id);
 
     if(productById) {
-        res.status(200).json({success: true, message: 'GET /productss by Id Works!', data: result});
+        res.status(200).json({success: true, message: 'GET /productss by Id Works!', data: productById});
     }
     else {
         res.status(400).json({success: false, message: `Product with id ${id} NOT FOUND !`});

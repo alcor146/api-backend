@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const cardSchema = mongoose.Schema({
-  username: {
+  createdBy: {
     type: String,
     default: "admin",
   },
