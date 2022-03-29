@@ -7,8 +7,6 @@ exports.getAllProducts = async (req, res, next) => {
         if (!result) {
         res.status(400).json({success: false, message: `NOT FOUND !`});
         } else {
-
-      
         res.status(200).json({success: true, message: 'GET /Products Works!', data: result});
         }
     }).catch( err => {

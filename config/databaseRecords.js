@@ -224,12 +224,21 @@ const cardRecords = [
 
     },
     {   
-        createdBy: "admin",
+        createdBy: "aurel",
         bank: "BRD",
         cardNumber: "345354",
         expirationMonth: "1",
         expirationYear: "1",
         securityCode: "432"
+
+    },
+    {   
+        createdBy: "admin",
+        bank: "BRD",
+        cardNumber: "123",
+        expirationMonth: "1123",
+        expirationYear: "1123",
+        securityCode: "1231"
 
     },
 ]
@@ -239,11 +248,19 @@ const locationRecords = [
         county: "Dambovita",
         town: "Targoviste",
         address: "Strada Aleea Manastirii, nr 15",
+        createdBy: "admin"
     },
     {   
         county: "Bacau",
         town: "Onesti",
-        address: "Strada Crizantemelor, nr 15"
+        address: "Strada Crizantemelor, nr 15",
+        createdBy: "admin"
+    },
+    {   
+        county: "Bacau",
+        town: "Onesti",
+        address: "Strada Crizantemelor, nr 15",
+        createdBy: "aurel"
     },
 ]
 

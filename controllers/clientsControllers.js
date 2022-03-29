@@ -23,10 +23,26 @@ exports.getClientsById = async (req, res, next) => {
     const clientById = await Client.findById(id);
 
     if(clientById) {
-        res.status(200).json({success: true, message: 'GET /clientss by Id Works!', data: result});
+        res.status(200).json({success: true, message: 'GET /clientss by Id Works!', data: clientById});
     }
     else {
         res.status(400).json({success: false, message: `Client with id ${id} NOT FOUND !`});
+    }
+
+}
+
+exports.getClientsByEmail = async (req, res, next) => {
+  console.log('GET /Clients by Id Works!');
+  
+  const email = req.body.email;
+
+    const clientByEmail = await Client.find({email: email});
+
+    if(clientByEmail) {
+        res.status(200).json({success: true, message: 'GET /clientss by email Works!', data: clientByEmail});
+    }
+    else {
+        res.status(400).json({success: false, message: `Client with email ${id} NOT FOUND !`});
     }
 
 }

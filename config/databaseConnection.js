@@ -37,10 +37,10 @@ async function populate() {
 
 
   for(let i=0; i<cardRecords.length; i++) {
-    var checkIfExists = await Card.findOne({bank: cardRecords[i].bank});
+    var checkIfExists = await Card.findOne({bank: cardRecords[i].bank, createdBy: cardRecords[i].createdBy});
     if(checkIfExists == null) {
       var newCard = new Card({
-        username: cardRecords[i].username,
+        createdBy: cardRecords[i].createdBy,
         bank: cardRecords[i].bank,
         cardNumber: cardRecords[i].cardNumber,
         expirationMonth: cardRecords[i].expirationMonth,
@@ -52,12 +52,13 @@ async function populate() {
   }
 
   for(let i=0; i<locationRecords.length; i++) {
-    var checkIfExists = await Location.findOne({bank: locationRecords[i].bank});
+    var checkIfExists = await Location.findOne({county: locationRecords[i].county, createdBy: locationRecords[i].createdBy});
     if(checkIfExists == null) {
       var newLocation = new Location({
         county: locationRecords[i].county,
         town: locationRecords[i].town,
         address: locationRecords[i].address,
+        createdBy: locationRecords[i].createdBy
       })
       newLocation.save();
     }

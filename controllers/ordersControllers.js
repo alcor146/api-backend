@@ -24,7 +24,7 @@ exports.getOrdersById = async (req, res, next) => {
     const orderById = await Order.findById(id);
 
     if(orderById) {
-        res.status(200).json({success: true, message: 'GET /orderss by Id Works!', data: result});
+        res.status(200).json({success: true, message: 'GET /orderss by Id Works!', data: orderById});
     }
     else {
         res.status(400).json({success: false, message: `Order with id ${id} NOT FOUND !`});
@@ -37,61 +37,55 @@ exports.createOrder = async (req, res, next) => {
 
       const createdBy = req.body.createdBy;
       const products = req.body.products;
-      const county = req.body.county;
-      const town = req.body.town;
-      const address = req.body.address;
+      const location = req.body.location;
+     
   
       var newOrder = new Order({
         createdBy: createdBy,
         products: products,
-        county: county,
-        town: town,
-        address: address,
+        location: location,
       })
       console.log(newOrder)
       newOrder.save();
   
       res.status(200).json({success: true, message: 'Order added to database!'});
 
-        
-      
-  
 }
 
 exports.modifyOrderById = async (req, res, next) => {
-  console.log('PUT /Orders by Id Works!');
+  console.log('PUT /Orders is commented!');
  
-      const id = req.params.id;
+      // const id = req.params.id;
 
-            const checkExistingOrder = await Order.findById(id);
+      //       const checkExistingOrder = await Order.findById(id);
     
-            if (!checkExistingOrder) {
-              res.status(400).json({success: false, message: `Order with id ${id} does not exist!`});
-            } else {
+      //       if (!checkExistingOrder) {
+      //         res.status(400).json({success: false, message: `Order with id ${id} does not exist!`});
+      //       } else {
 
-              const createdBy = req.body.createdBy;
-              const products = req.body.products;
-              const county = req.body.county;
-              const town = req.body.town;
-              const address = req.body.address;
+      //         const createdBy = req.body.createdBy;
+      //         const products = req.body.products;
+      //         const county = req.body.county;
+      //         const town = req.body.town;
+      //         const address = req.body.address;
 
-                const updatedOrder = await Order.findOneAndUpdate(
-                  { _id: id },
-                  { createdBy: createdBy,
-                    products: products,
-                    county: county,
-                    town: town,
-                    address: address},
-                  { new: true }
-                );
+      //           const updatedOrder = await Order.findOneAndUpdate(
+      //             { _id: id },
+      //             { createdBy: createdBy,
+      //               products: products,
+      //               county: county,
+      //               town: town,
+      //               address: address},
+      //             { new: true }
+      //           );
 
-                if (updatedOrder) {
-                res.status(200).json({success: true, message: 'Name, Value, Description Updated Succesfully!', data: updatedOrder});
-                } else {
-                  res.status(400).json({success: false, message: 'Name, Value, Description was not Updated !', data: updatedOrder});
-                }
+      //           if (updatedOrder) {
+      //           res.status(200).json({success: true, message: 'Name, Value, Description Updated Succesfully!', data: updatedOrder});
+      //           } else {
+      //             res.status(400).json({success: false, message: 'Name, Value, Description was not Updated !', data: updatedOrder});
+      //           }
              
-        }
+      //   }
 }
 
 //@describe DELETE /Orders/:id -- Admin

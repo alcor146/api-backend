@@ -12,6 +12,10 @@ const locationSchema = mongoose.Schema({
   address: {
     type: String,
     require: true,
+  },
+  createdBy: {
+    type: String,
+    require: true,
   }
 })
 

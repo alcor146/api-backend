@@ -15,22 +15,23 @@ exports.getAllCarts = async (req, res, next) => {
     } 
 
 
-exports.getCartsById = async (req, res, next) => {
-  console.log('GET /Carts by Id Works!');
+exports.getCartsByUser = async (req, res, next) => {
+  console.log('GET /Carts by User Works!');
   
-  const createdBy = req.params.id;
+  const createdBy = req.body.createdBy;
   console.log(createdBy)
 
-    const cartById = await Cart.findOne({ createdBy: createdBy});
+    const cartByUser = await Cart.findOne({ createdBy: createdBy});
 
-    if(cartById) {
-        res.status(200).json({success: true, message: 'GET /carts by Id Works!', data: cartById});
+    if(cartByUser) {
+        res.status(200).json({success: true, message: 'GET /carts by Id Works!', data: cartByUser});
     }
     else {
         res.status(400).json({success: false, message: `Cart with id ${createdBy} NOT FOUND !`});
     }
 
 }
+
 
 
 exports.createCart = async (req, res, next) => {

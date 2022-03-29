@@ -1,3 +1,4 @@
+const { create } = require('../models/Location');
 const Location = require('../models/Location');
 
 exports.getAllLocations = async (req, res, next) => {
@@ -20,12 +21,28 @@ exports.getLocationsById = async (req, res, next) => {
   
   const id = req.params.id;
 
-    const locationById = await Location.findById(id);
+  const locationById = await Location.findById(id);
 
     if(locationById) {
-        res.status(200).json({success: true, message: 'GET /locationss by Id Works!', data: result});
+        res.status(200).json({success: true, message: 'GET /locationss by Id Works!', data: locationById});
     }
     else {
+        res.status(400).json({success: false, message: `Location with id ${id} NOT FOUND !`});
+    }
+
+}
+
+exports.getLocationsByUser = async (req, res, next) => {
+  console.log('POST /Locations by user Works!');
+  
+  const createdBy = req.body.createdBy;
+  console.log(createdBy)
+
+  const locationByUser= await Location.find({createdBy: createdBy});
+
+    if(locationByUser) {
+        res.status(200).json({success: true, message: 'GET /locationss by Id Works!', data: locationByUser});
+    }else {
         res.status(400).json({success: false, message: `Location with id ${id} NOT FOUND !`});
     }
 
@@ -39,9 +56,6 @@ exports.createLocation = async (req, res, next) => {
       const town = req.body.town;
       const address = req.body.address;
       
-     
-
-  
       const checkExistingLocation = await Location.findOne({ town: town})
   
       if (checkExistingLocation) {

@@ -31,6 +31,21 @@ exports.getCardsById = async (req, res, next) => {
 
 }
 
+exports.getCardsByUser = async (req, res, next) => {
+  console.log('GET /Cards by User Works!');
+  const createdBy = req.body.createdBy;
+
+    const cardByUser = await Card.find({createdBy: createdBy});
+
+    if(cardByUser) {
+        res.status(200).json({success: true, message: 'GET /cardss by Id Works!', data: cardByUser});
+    }
+    else {
+        res.status(400).json({success: false, message: `Card with id ${createdBy} NOT FOUND !`});
+    }
+
+}
+
 
 exports.createCard = async (req, res, next) => {
     console.log('POST /cards!!');
@@ -41,8 +56,6 @@ exports.createCard = async (req, res, next) => {
       const expirationYear = req.body.expirationYear;
       const securityCode = req.body.securityCode;
      
-
-  
       const checkExistingCard = await Card.findOne({ cardNumber: cardNumber})
   
       if (checkExistingCard) {
