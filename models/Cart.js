@@ -5,10 +5,13 @@ const cartSchema = mongoose.Schema({
     type: Map,
     default: {},
   },
+  location: {},
+  card: {},
   createdBy: {
     type: String,
     require: true
-  }
+  }, 
+
 })
 
 const Cart = mongoose.model("Cart", cartSchema)

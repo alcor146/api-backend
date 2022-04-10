@@ -7,6 +7,7 @@ const orderSchema = mongoose.Schema({
   },
   products: [],
   location: {},
+  card: {},
   date: {
     type: Date,
     default: Date.now

@@ -4,9 +4,10 @@ const router = express.Router();
 const {getAllProducts, getProductsById, createProduct, modifyProductById, deleteProductById, getMultipleProducts } = require('../controllers/productsControllers');
 const {getAllCards, getCardsById, getCardsByUser, createCard, modifyCardById, deleteCardById } = require('../controllers/cardsControllers');
 const {getAllLocations, getLocationsById, getLocationsByUser, createLocation, modifyLocationById, deleteLocationById } = require('../controllers/locationsControllers');
-const {getAllClients, getClientsById, createClient, modifyClientById, deleteClientById, getClientsByEmail } = require('../controllers/clientsControllers');
+const {getAllClients, getClientsById, createClient, modifyClientById, deleteClientById, getClientsByEmail, getClientsByCredentials } = require('../controllers/clientsControllers');
 const {getAllOrders, getOrdersById, createOrder, modifyOrderById, deleteOrderById } = require('../controllers/ordersControllers');
-const {getAllCarts, getCartsByUser, createCart, modifyCartById, deleteCartById } = require('../controllers/cartsControllers');
+const {getAllCarts, getCartsByUser, createCart, modifyCartById, deleteCartById, emptyCartById, modifyCartDetails} = require('../controllers/cartsControllers');
+
 
 
 router.route("/products").get(getAllProducts);        //get all
@@ -36,6 +37,7 @@ router.route("/clients").post(createClient);       //create
 router.route("/clients/user").post(getClientsByEmail);       //create
 router.route("/clients/:id").put(modifyClientById);    //modifybyid
 router.route("/clients/:id").delete(deleteClientById); //delete
+router.route("/clients/login/user").post(getClientsByCredentials);   
 
 router.route("/orders").get(getAllOrders);        //get all
 router.route("/orders/:id").get(getOrdersById);    //get by id    
@@ -47,7 +49,9 @@ router.route("/carts").get(getAllCarts);        //get all
 router.route("/carts").post(createCart);       //create
 router.route("/carts/user").post(getCartsByUser); 
 router.route("/carts/:id").put(modifyCartById);    //modifybyid
+router.route("/carts/changeDetails/:id").put(modifyCartDetails);    //modifyDetails
 router.route("/carts/:id").delete(deleteCartById); //delete
+router.route("/carts/emptyCart").post(emptyCartById);  
 
 
 

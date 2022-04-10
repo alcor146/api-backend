@@ -102,3 +102,66 @@ exports.deleteCartById = async (req, res, next) => {
         
 }
 
+exports.emptyCartById = async (req, res, next) => {
+  console.log('Empty /Carts by Id Works!');
+  
+    const createdBy = req.body.createdBy;
+
+    const checkExistingCart = await Cart.findOne({ createdBy: createdBy});
+    if (!checkExistingCart) {
+      res.status(401).json({success: false, message: `Cart with id ${createdBy} does not exist!`});
+  } else {
+    checkExistingCart.products.clear()
+    const updatedCart = await Cart.findOneAndUpdate(
+      { createdBy: createdBy},
+      { 
+      products: checkExistingCart.products,
+      },
+      { new: true }
+  );
+    if (updatedCart) {
+        res.status(200).json({success: true, message: 'Cart Updated Succesfully!', data: updatedCart});
+    } else {
+        res.status(400).json({success: false, message: 'Cart was not Updated !', data: updatedCart});
+    }
+  }
+}
+
+exports.modifyCartDetails = async (req, res, next) => {
+  console.log('PUT /Carts change item');
+  const createdBy = req.params.id;
+  const location = req.body.location;
+  const card = req.body.card  
+
+    const checkExistingCart = await Cart.findOne({ createdBy: createdBy});
+
+    if (!checkExistingCart) {
+        res.status(401).json({success: false, message: `Cart with id ${createdBy} does not exist!`});
+    } else {
+        if(location == null){
+          const updatedCart = await Cart.findOneAndUpdate(
+            { createdBy: createdBy},
+            { 
+            card: card
+            },
+            { new: true }
+        );
+        } else if(card == null){
+          const updatedCart = await Cart.findOneAndUpdate(
+            { createdBy: createdBy},
+            { 
+            location: location
+            },
+            { new: true }
+        );
+        }
+        
+        if (updatedCart) {
+            res.status(200).json({success: true, message: 'Cart Updated Succesfully!', data: updatedCart});
+        } else {
+            res.status(400).json({success: false, message: 'Cart was not Updated !', data: updatedCart});
+        }
+        
+    }
+}
+

@@ -1,4 +1,5 @@
 const Order = require('../models/Order');
+const Product = require('../models/Product');
 
 exports.getAllOrders = async (req, res, next) => {
   console.log('GET /Orders Works!');
@@ -38,15 +39,32 @@ exports.createOrder = async (req, res, next) => {
       const createdBy = req.body.createdBy;
       const products = req.body.products;
       const location = req.body.location;
+      const card = req.body.card
+      console.log(products)
      
   
       var newOrder = new Order({
         createdBy: createdBy,
         products: products,
         location: location,
+        card: card
       })
       console.log(newOrder)
       newOrder.save();
+
+      for(let product of products){
+        console.log(product.name)
+          
+        const updatedProduct = await Product.findOneAndUpdate(
+          {  name: product.name},
+          { 
+            inStock: product.inStock - product.count},
+          { new: true }
+        );
+
+        console.log("this is after update  ", updatedProduct)
+
+      }
   
       res.status(200).json({success: true, message: 'Order added to database!'});
 

@@ -47,6 +47,22 @@ exports.getClientsByEmail = async (req, res, next) => {
 
 }
 
+exports.getClientsByCredentials = async (req, res, next) => {
+  console.log('GET /Clients by Id Works!');
+  
+  const email = req.body.email;
+  const password = req.body.password;
+
+    const clientByCredentials = await Client.find({email: email, password: password});
+    console.log(clientByCredentials)
+    if(clientByCredentials.length == 0) {
+      res.status(400).json({success: false, message: `Login failed, no such user`});
+    } else {  
+      res.status(200).json({success: true, message: 'GET /clientss by credentils Works!', data: clientByCredentials});
+    }
+
+}
+
 
 exports.createClient = async (req, res, next) => {
     console.log('POST /clients!!');
