@@ -218,8 +218,9 @@ const cardRecords = [
         createdBy: "admin",
         bank: "BCR",
         cardNumber: "3525355235",
-        expirationMonth: "12",
-        expirationYear: "1",
+        cardName: "Ristoiu George Aurel",
+        expirationDate: "12/21",
+
         securityCode: "132"
 
     },
@@ -227,8 +228,9 @@ const cardRecords = [
         createdBy: "aurel",
         bank: "BRD",
         cardNumber: "345354",
-        expirationMonth: "1",
-        expirationYear: "1",
+        cardName: "Ristoiu George Aurel",
+        expirationDate: "05/25",
+
         securityCode: "432"
 
     },
@@ -236,8 +238,8 @@ const cardRecords = [
         createdBy: "admin",
         bank: "BRD",
         cardNumber: "123",
-        expirationMonth: "1123",
-        expirationYear: "1123",
+        cardName: "Ristoiu George Aurel",
+        expirationDate: "11/23",
         securityCode: "1231"
 
     },

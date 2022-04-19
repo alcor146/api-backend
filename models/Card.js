@@ -9,15 +9,15 @@ const cardSchema = mongoose.Schema({
     type: String,
     require: true,
   },
+  cardName: {
+    type: String,
+    require: true,
+  },
   cardNumber: {
     type: String,
     require: true,
   },
-  expirationMonth: {
-    type: String,
-    require: true,
-  },
-  expirationYear: {
+  expirationDate: {
     type: String,
     require: true,
   },

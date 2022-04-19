@@ -43,11 +43,12 @@ async function populate() {
         createdBy: cardRecords[i].createdBy,
         bank: cardRecords[i].bank,
         cardNumber: cardRecords[i].cardNumber,
-        expirationMonth: cardRecords[i].expirationMonth,
-        expirationYear: cardRecords[i].expirationYear,
+        cardName: cardRecords[i].cardName,
+        expirationDate: cardRecords[i].expirationDate,
         securityCode: cardRecords[i].securityCode,
       })
       newCard.save();
+      console.log(newCard)
     }
   }
 

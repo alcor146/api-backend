@@ -52,8 +52,9 @@ exports.createCard = async (req, res, next) => {
 
       const bank = req.body.bank;
       const cardNumber = req.body.cardNumber;
-      const expirationMonth = req.body.expirationMonth;
-      const expirationYear = req.body.expirationYear;
+      const cardName = req.body.cardName;
+      const expirationDate = req.body.expirationDate;
+   
       const securityCode = req.body.securityCode;
      
       const checkExistingCard = await Card.findOne({ cardNumber: cardNumber})
@@ -67,8 +68,9 @@ exports.createCard = async (req, res, next) => {
       var newCard = new Card({
         bank: bank,
         cardNumber: cardNumber,
-        expirationMonth: expirationMonth,
-        expirationYear: expirationYear,
+        cardName: cardName,
+        expirationDate: expirationDate,
+
         securityCode: securityCode,
       })
       console.log(newCard)
@@ -94,8 +96,9 @@ exports.modifyCardById = async (req, res, next) => {
 
                 const bank = req.body.bank
                 const cardNumber = req.body.cardNumber;
-                const expirationMonth = req.body.expirationMonth;
-                const expirationYear = req.body.expirationYear;
+                const cardName = req.body.cardName;
+                const expirationDate = req.body.expirationDate;
+      
                 const securityCode = req.body.securityCode;
 
                 const updatedCard = await Card.findOneAndUpdate(
@@ -103,8 +106,9 @@ exports.modifyCardById = async (req, res, next) => {
                   { 
                     bank: bank,
                     cardNumber: cardNumber,
-                    expirationMonth: expirationMonth,
-                    expirationYear: expirationYear,
+                    cardName: cardName,
+                    expirationDate: expirationDate,
+                
                     securityCode: securityCode, },
                   { new: true }
                 );
@@ -130,8 +134,5 @@ exports.deleteCardById = async (req, res, next) => {
     const deleteCard = await Card.findByIdAndDelete(id);
 
     res.status(200).json({success: true, message: `Card with id ${id} deleted!`, data: deleteCard});
-        
-    
-  
 }
 

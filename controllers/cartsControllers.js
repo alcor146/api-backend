@@ -145,7 +145,13 @@ exports.modifyCartDetails = async (req, res, next) => {
             card: card
             },
             { new: true }
+            
         );
+        if (updatedCart) {
+          res.status(200).json({success: true, message: 'Cart Updated Succesfully!', data: updatedCart});
+        } else {
+          res.status(400).json({success: false, message: 'Cart was not Updated !', data: updatedCart});
+      }
         } else if(card == null){
           const updatedCart = await Cart.findOneAndUpdate(
             { createdBy: createdBy},
@@ -154,13 +160,14 @@ exports.modifyCartDetails = async (req, res, next) => {
             },
             { new: true }
         );
+        if (updatedCart) {
+          res.status(200).json({success: true, message: 'Cart Updated Succesfully!', data: updatedCart});
+        } else {
+          res.status(400).json({success: false, message: 'Cart was not Updated !', data: updatedCart});
+      }
         }
         
-        if (updatedCart) {
-            res.status(200).json({success: true, message: 'Cart Updated Succesfully!', data: updatedCart});
-        } else {
-            res.status(400).json({success: false, message: 'Cart was not Updated !', data: updatedCart});
-        }
+
         
     }
 }
