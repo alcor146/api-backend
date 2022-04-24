@@ -51,12 +51,12 @@ exports.getLocationsByUser = async (req, res, next) => {
 
 exports.createLocation = async (req, res, next) => {
     console.log('POST /locations!!');
-
+      const createdBy = req.body.createdBy;
       const county = req.body.county;
       const town = req.body.town;
       const address = req.body.address;
       
-      const checkExistingLocation = await Location.findOne({ town: town})
+      const checkExistingLocation = await Location.findOne({ town: town, createdBy: createdBy, address: address})
   
       if (checkExistingLocation) {
 
@@ -65,6 +65,7 @@ exports.createLocation = async (req, res, next) => {
       } else {
 
       var newLocation = new Location({
+        createdBy: createdBy,
         county: county,
         town: town,
         address: address,

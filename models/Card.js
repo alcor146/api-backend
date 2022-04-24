@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const cardSchema = mongoose.Schema({
   createdBy: {
     type: String,
-    default: "admin",
+    require: true,
   },
   bank: {
     type: String,

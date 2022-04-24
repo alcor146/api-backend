@@ -66,16 +66,18 @@ exports.getClientsByCredentials = async (req, res, next) => {
 
 exports.createClient = async (req, res, next) => {
     console.log('POST /clients!!');
-
+      const role = req.body.role;
       const email = req.body.email;
       const name = req.body.name;
       const phoneNumber = req.body.phoneNumber;
       const password = req.body.password;
+
+      if(role == undefined || role == ""){
+        role = "basic"
+      }
       
      
-
-  
-      const checkExistingClient = await Client.findOne({ name: name})
+      const checkExistingClient = await Client.findOne({ email: email})
   
       if (checkExistingClient) {
 
@@ -84,6 +86,7 @@ exports.createClient = async (req, res, next) => {
       } else {
 
       var newClient = new Client({
+        role: role,
         email: email,
         name: name,
         phoneNumber: phoneNumber,
@@ -109,7 +112,7 @@ exports.modifyClientById = async (req, res, next) => {
             if (!checkExistingClient) {
               res.status(400).json({success: false, message: `Client with id ${id} does not exist!`});
             } else {
-
+                const role = req.body.role
                 const email = req.body.email
                 const name = req.body.name;
                 const phoneNumber = req.body.phoneNumber;
@@ -118,6 +121,7 @@ exports.modifyClientById = async (req, res, next) => {
                 const updatedClient = await Client.findOneAndUpdate(
                   { _id: id },
                   { 
+                    role: role,
                     email: email,
                     name: name,
                     phoneNumber: phoneNumber,

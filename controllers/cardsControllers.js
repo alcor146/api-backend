@@ -49,14 +49,13 @@ exports.getCardsByUser = async (req, res, next) => {
 
 exports.createCard = async (req, res, next) => {
     console.log('POST /cards!!');
-
+      const createdBy = req.body.createdBy;
       const bank = req.body.bank;
       const cardNumber = req.body.cardNumber;
       const cardName = req.body.cardName;
       const expirationDate = req.body.expirationDate;
-   
       const securityCode = req.body.securityCode;
-     
+      console.log(createdBy)
       const checkExistingCard = await Card.findOne({ cardNumber: cardNumber})
   
       if (checkExistingCard) {
@@ -66,6 +65,7 @@ exports.createCard = async (req, res, next) => {
       } else {
 
       var newCard = new Card({
+        createdBy: createdBy,
         bank: bank,
         cardNumber: cardNumber,
         cardName: cardName,

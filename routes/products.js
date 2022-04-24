@@ -5,7 +5,7 @@ const {getAllProducts, getProductsById, createProduct, modifyProductById, delete
 const {getAllCards, getCardsById, getCardsByUser, createCard, modifyCardById, deleteCardById } = require('../controllers/cardsControllers');
 const {getAllLocations, getLocationsById, getLocationsByUser, createLocation, modifyLocationById, deleteLocationById } = require('../controllers/locationsControllers');
 const {getAllClients, getClientsById, createClient, modifyClientById, deleteClientById, getClientsByEmail, getClientsByCredentials } = require('../controllers/clientsControllers');
-const {getAllOrders, getOrdersById, createOrder, modifyOrderById, deleteOrderById } = require('../controllers/ordersControllers');
+const {getAllOrders, getOrdersById, createOrder, modifyOrderById, deleteOrderById, getOrdersByUser } = require('../controllers/ordersControllers');
 const {getAllCarts, getCartsByUser, createCart, modifyCartById, deleteCartById, emptyCartById, modifyCartDetails} = require('../controllers/cartsControllers');
 
 
@@ -42,6 +42,7 @@ router.route("/clients/login/user").post(getClientsByCredentials);
 router.route("/orders").get(getAllOrders);        //get all
 router.route("/orders/:id").get(getOrdersById);    //get by id    
 router.route("/orders").post(createOrder);       //create
+router.route("/orders/user").post(getOrdersByUser);    //get by user   
 router.route("/orders/:id").put(modifyOrderById);    //modifybyid
 router.route("/orders/:id").delete(deleteOrderById); //delete
 

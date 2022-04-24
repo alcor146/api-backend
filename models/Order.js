@@ -8,6 +8,11 @@ const orderSchema = mongoose.Schema({
   products: [],
   location: {},
   card: {},
+  status: {
+    type: String,
+    require: true,
+    default: "Plasata"
+  },
   date: {
     type: Date,
     default: Date.now

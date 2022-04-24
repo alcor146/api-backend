@@ -1,3 +1,4 @@
+const { create } = require('../models/Cart');
 const Cart = require('../models/Cart');
 
 exports.getAllCarts = async (req, res, next) => {
@@ -37,7 +38,7 @@ exports.getCartsByUser = async (req, res, next) => {
 exports.createCart = async (req, res, next) => {
     console.log('POST /carts!!');
      
-    const createdBy = req.params.createdBy;
+    const createdBy = req.body.createdBy;
 
       const checkExistingCart = await Cart.findOne({ createdBy: createdBy});
   
@@ -47,7 +48,7 @@ exports.createCart = async (req, res, next) => {
 
       } else {
       var newCart = new Cart({
-        products: new Map(), 
+        products: new Map(),
         createdBy: createdBy,
       })
       console.log(newCart)
@@ -94,9 +95,9 @@ exports.modifyCartById = async (req, res, next) => {
 exports.deleteCartById = async (req, res, next) => {
   console.log('DELETE /Carts by Id Works!');
   
-    const createdBy = req.params.createdBy;
+    const createdBy = req.params.id;
 
-    const deleteCart = await Cart.findByIdAndDelete(createdBy);
+    const deleteCart = await Cart.deleteOne({createdBy: createdBy});
 
     res.status(200).json({success: true, message: `Cart with id ${createdBy} deleted!`, data: deleteCart});
         
@@ -134,8 +135,9 @@ exports.modifyCartDetails = async (req, res, next) => {
   const card = req.body.card  
 
     const checkExistingCart = await Cart.findOne({ createdBy: createdBy});
-
+  
     if (!checkExistingCart) {
+      console.log("402")
         res.status(401).json({success: false, message: `Cart with id ${createdBy} does not exist!`});
     } else {
         if(location == null){
@@ -148,8 +150,10 @@ exports.modifyCartDetails = async (req, res, next) => {
             
         );
         if (updatedCart) {
+          console.log("201")
           res.status(200).json({success: true, message: 'Cart Updated Succesfully!', data: updatedCart});
         } else {
+          console.log("401")
           res.status(400).json({success: false, message: 'Cart was not Updated !', data: updatedCart});
       }
         } else if(card == null){
@@ -161,8 +165,10 @@ exports.modifyCartDetails = async (req, res, next) => {
             { new: true }
         );
         if (updatedCart) {
+          console.log("CART", updatedCart)
           res.status(200).json({success: true, message: 'Cart Updated Succesfully!', data: updatedCart});
         } else {
+          console.log("400")
           res.status(400).json({success: false, message: 'Cart was not Updated !', data: updatedCart});
       }
         }
