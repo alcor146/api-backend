@@ -215,27 +215,24 @@ const DATA = [
 
 const cardRecords = [
     {   
-        createdBy: "admin",
+        createdBy: "admin@yahoo.com",
         bank: "BCR",
         cardNumber: "3525355235",
         cardName: "Ristoiu George Aurel",
         expirationDate: "12/21",
-
         securityCode: "132"
-
     },
     {   
-        createdBy: "aurel",
+        createdBy: "aurel.ristoiu@yahoo.ro",
         bank: "BRD",
         cardNumber: "345354",
         cardName: "Ristoiu George Aurel",
         expirationDate: "05/25",
-
         securityCode: "432"
 
     },
     {   
-        createdBy: "admin",
+        createdBy: "aurel.ristoiu@yahoo.ro",
         bank: "BRD",
         cardNumber: "123",
         cardName: "Ristoiu George Aurel",
@@ -250,51 +247,42 @@ const locationRecords = [
         county: "Dambovita",
         town: "Targoviste",
         address: "Strada Aleea Manastirii, nr 15",
-        createdBy: "admin"
+        createdBy: "admin@yahoo.com"
     },
     {   
         county: "Bacau",
         town: "Onesti",
         address: "Strada Crizantemelor, nr 15",
-        createdBy: "admin"
-    },
-    {   
-        county: "Bacau",
-        town: "Onesti",
-        address: "Strada Crizantemelor, nr 15",
-        createdBy: "aurel"
+        createdBy: "aurel.ristoiu@yahoo.ro"
     },
 ]
 
 const clientRecords = [
     {   
-        email: "aurel@yahoo.com",
+        email: "aurel.ristoiu@yahoo.ro",
         name: "Ristoiu Aurel",
         phoneNumber: "63463463463463",
-        password: "parola123"
+        password: "123"
     },
     {   
-        email: "tudy@gmail.com",
+        role: "admin",
+        email: "admin@yahoo.com",
         name: "Tudose Constantin",
         phoneNumber: "1231231231223",
-        password: "parola123"
+        password: "123"
     },
 ]
 
-const orderRecords = [
-    
-]
 
 const cartRecords = [
     {
-        createdBy: "admin",
+        createdBy: "admin@yahoo.com",
         products:  new Map([['iPhone 12', "1"],['iHunt S21 Ultra', "1"]])
     },
 ]
 
 module.exports = {
     DATA,
-    orderRecords,
     cardRecords,
     locationRecords,
     clientRecords,

@@ -78,7 +78,7 @@ exports.createOrder = async (req, res, next) => {
         card: card
       })
       console.log(newOrder)
-      newOrder.save();
+      await newOrder.save();
 
       for(let product of products){
         console.log(product.name)
@@ -98,12 +98,14 @@ exports.createOrder = async (req, res, next) => {
 
 }
 
+
 exports.modifyOrderById = async (req, res, next) => {
   console.log('PUT /Orders is commented!');
  
       const id = req.params.id;
       const status = req.body.status
       const customerEmail = req.body.email
+      console.log(customerEmail)
 
       const checkExistingOrder = await Order.findById(id);
 

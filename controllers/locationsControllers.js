@@ -71,7 +71,7 @@ exports.createLocation = async (req, res, next) => {
         address: address,
       })
       console.log(newLocation)
-      newLocation.save();
+      await newLocation.save();
   
       res.status(200).json({success: true, message: 'Location added to database!'});
 

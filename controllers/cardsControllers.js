@@ -56,7 +56,7 @@ exports.createCard = async (req, res, next) => {
       const expirationDate = req.body.expirationDate;
       const securityCode = req.body.securityCode;
       console.log(createdBy)
-      const checkExistingCard = await Card.findOne({ cardNumber: cardNumber})
+      const checkExistingCard = await Card.findOne({ cardNumber: cardNumber, createdBy: createdBy})
   
       if (checkExistingCard) {
 
@@ -74,7 +74,7 @@ exports.createCard = async (req, res, next) => {
         securityCode: securityCode,
       })
       console.log(newCard)
-      newCard.save();
+      await newCard.save();
   
       res.status(200).json({success: true, message: 'Card added to database!'});
 

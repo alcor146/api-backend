@@ -6,7 +6,7 @@ const {getAllCards, getCardsById, getCardsByUser, createCard, modifyCardById, de
 const {getAllLocations, getLocationsById, getLocationsByUser, createLocation, modifyLocationById, deleteLocationById } = require('../controllers/locationsControllers');
 const {getAllClients, getClientsById, createClient, modifyClientById, deleteClientById, getClientsByEmail, getClientsByCredentials } = require('../controllers/clientsControllers');
 const {getAllOrders, getOrdersById, createOrder, modifyOrderById, deleteOrderById, getOrdersByUser } = require('../controllers/ordersControllers');
-const {getAllCarts, getCartsByUser, createCart, modifyCartById, deleteCartById, emptyCartById, modifyCartDetails} = require('../controllers/cartsControllers');
+const {getAllCarts, getCartsByUser, createCart, modifyCartById, deleteCartById, emptyCartById, modifyCartDetails, modifyCartUsername} = require('../controllers/cartsControllers');
 
 
 
@@ -53,6 +53,13 @@ router.route("/carts/:id").put(modifyCartById);    //modifybyid
 router.route("/carts/changeDetails/:id").put(modifyCartDetails);    //modifyDetails
 router.route("/carts/:id").delete(deleteCartById); //delete
 router.route("/carts/emptyCart").post(emptyCartById);  
+
+router.route("/admincarts").get(getAllCards);        //get all
+router.route("/admincarts/:id").get(getCardsById);    //get by id  
+router.route("/admincarts").post(createCard);       //create
+router.route("/admincarts/:id").put(modifyCardById);    //modifybyid
+router.route("/admincarts/:id").delete(deleteCardById); //delete
+
 
 
 

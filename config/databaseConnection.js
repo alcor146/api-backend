@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Product = require('../models/Product');
-const {DATA, orderRecords, cardRecords, locationRecords, clientRecords, cartRecords}  = require('./databaseRecords')
+const {DATA, cardRecords, locationRecords, clientRecords, cartRecords}  = require('./databaseRecords')
 const { async } = require('rxjs');
 const Card = require('../models/Card');
 const Location = require('../models/Location')
@@ -69,28 +69,13 @@ async function populate() {
     var checkIfExists = await Client.findOne({email: clientRecords[i].email});
     if(checkIfExists == null) {
       var newClient = new Client({
+        role: clientRecords[i].role,
         email: clientRecords[i].email,
         name: clientRecords[i].name,
         phoneNumber: clientRecords[i].phoneNumber,
         password: clientRecords[i].password,
       })
       newClient.save();
-    }
-  }
-
- 
-  for(let i=0; i<orderRecords.length; i++) {
-    var checkIfExists = await Order.findOne({createdBy: orderRecords[i].createdBy});
-    if(checkIfExists == null) {
-      var newOrder = new Order({
-        createdBy: orderRecords[i].createdBy,
-        products: orderRecords[i].products,
-        price: orderRecords[i].price,
-        county: orderRecords[i].county,
-        town: orderRecords[i].town,
-        address: orderRecords[i].address,
-      })
-      newOrder.save();
     }
   }
 
@@ -114,8 +99,8 @@ async function populate() {
 
 
 const connectDB = async () => {
-  //var mongoString = "mongodb://username:password@mongo-mongodb.mongo.svc:27017/licenta"
-  var mongoString = "mongodb://username:password@localhost:27017/licenta"
+  var mongoString = "mongodb://username:password@mongo-mongodb.mongo.svc:27017/licenta"
+  //var mongoString = "mongodb://username:password@localhost:27017/licenta"
   console.log('connection string:', mongoString);
   await mongoose.connect(mongoString, {
     useNewUrlParser: true,

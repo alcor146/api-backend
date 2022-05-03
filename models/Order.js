@@ -11,7 +11,8 @@ const orderSchema = mongoose.Schema({
   status: {
     type: String,
     require: true,
-    default: "Plasata"
+    default: "New",
+    enum: ['New', 'On the way', 'Delivered', 'Canceled'],
   },
   date: {
     type: Date,

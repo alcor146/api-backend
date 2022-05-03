@@ -98,7 +98,7 @@ exports.createProduct = async (req, res, next) => {
         inStock: inStock
       })
       console.log(newProduct)
-      newProduct.save();
+      await newProduct.save();
   
       res.status(200).json({success: true, message: 'Product added to database!'});
 

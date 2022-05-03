@@ -1,4 +1,4 @@
-const { create } = require('../models/Cart');
+
 const Cart = require('../models/Cart');
 
 exports.getAllCarts = async (req, res, next) => {
@@ -52,7 +52,7 @@ exports.createCart = async (req, res, next) => {
         createdBy: createdBy,
       })
       console.log(newCart)
-      newCart.save();
+      await newCart.save();
   
       res.status(200).json({success: true, message: 'Cart added to database!'});
         
@@ -103,6 +103,30 @@ exports.deleteCartById = async (req, res, next) => {
         
 }
 
+exports.modifyCartUsername = async (req, res, next) => {
+  
+    const createdBy = req.params.id;
+    const checkExistingCart = await Cart.findOne({ createdBy: createdBy});
+
+    if (!checkExistingCart) {
+        res.status(401).json({success: false, message: `Cart with id ${createdBy} does not exist!`});
+    } else {
+        
+        const updatedCart = await Cart.findOneAndUpdate(
+            { createdBy: createdBy},
+            { 
+              createdBy: createdBy,
+            },
+            { new: true }
+        );
+        if (updatedCart) {
+            res.status(200).json({success: true, message: 'Cart Updated Succesfully!', data: updatedCart});
+        } else {
+            res.status(400).json({success: false, message: 'Cart was not Updated !', data: updatedCart});
+        }
+    }    
+}
+
 exports.emptyCartById = async (req, res, next) => {
   console.log('Empty /Carts by Id Works!');
   
@@ -117,6 +141,8 @@ exports.emptyCartById = async (req, res, next) => {
       { createdBy: createdBy},
       { 
       products: checkExistingCart.products,
+      card: {},
+      location: {}
       },
       { new: true }
   );

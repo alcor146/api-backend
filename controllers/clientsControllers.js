@@ -1,4 +1,9 @@
 const Client = require('../models/Client');
+const Cart = require('../models/Cart');
+const Card = require('../models/Card');
+const Location = require('../models/Location')
+const Order = require('../models/Order');
+
 
 exports.getAllClients = async (req, res, next) => {
   console.log('GET /Clients Works!');
@@ -32,7 +37,7 @@ exports.getClientsById = async (req, res, next) => {
 }
 
 exports.getClientsByEmail = async (req, res, next) => {
-  console.log('GET /Clients by Id Works!');
+  console.log('GET /Clients by Email Works!');
   
   const email = req.body.email;
 
@@ -66,7 +71,7 @@ exports.getClientsByCredentials = async (req, res, next) => {
 
 exports.createClient = async (req, res, next) => {
     console.log('POST /clients!!');
-      const role = req.body.role;
+      let role = req.body.role;
       const email = req.body.email;
       const name = req.body.name;
       const phoneNumber = req.body.phoneNumber;
@@ -93,7 +98,14 @@ exports.createClient = async (req, res, next) => {
         password: password,
       })
       console.log(newClient)
-      newClient.save();
+      await newClient.save();
+
+      var newCart = new Cart({
+        products: new Map(),
+        createdBy: email,
+      })
+      console.log(newCart)
+      await newCart.save();
   
       res.status(200).json({success: true, message: 'Client added to database!'});
 
@@ -146,9 +158,18 @@ exports.deleteClientById = async (req, res, next) => {
   console.log('DELETE /Clients by Id Works!');
   
     const id = req.params.id;
+    const createdBy = req.headers.createdby
+    console.log(req.headers)
+    console.log(createdBy)
+    if(createdBy != undefined){
+      await Location.deleteMany({createdBy: createdBy})
+      await Card.deleteMany({createdBy: createdBy})
+      await Cart.deleteMany({createdBy: createdBy})
+      await Order.deleteMany({createdBy: createdBy})
+    }
 
     const deleteClient = await Client.findByIdAndDelete(id);
-
+  
     res.status(200).json({success: true, message: `Client with id ${id} deleted!`, data: deleteClient});
 }
 
