@@ -4,8 +4,7 @@ const app = express();
 const PORT = 3001;
 const connectDB = require('./config/databaseConnection')
 const path = require('path')
-
-connectDB()
+const connection = connectDB()
 
 app.use(cors({
     origin: "*"
@@ -20,4 +19,6 @@ app.use('/api', require('./routes/products'));
 const server = app.listen( PORT, () => {
     console.log(`App microservice listening on port ${PORT}`);
 })
+
+module.exports = { connection, server, app}
 
